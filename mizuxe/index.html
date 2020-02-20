@@ -10,9 +10,8 @@
   <title>Bootstrap Theme</title>
 </head>
 
-<body>
-
-  <nav class="navbar navbar-expand-md navbar-light fixed-top py-4">
+<body id="home" data-spy="scroll" data-target="#main-nav">
+  <nav class="navbar navbar-expand-md navbar-light fixed-top py-4" id="main-nav">
     <div class="container">
       <a href="#home" class="navbar-brand">
         <img src="project_images/mizuxe/mlogo.png" width="50pm" height="50px"
@@ -307,19 +306,95 @@
      </div>
    </div>
   </div>
-
 </section>
 
+<section id="contact" class="bg-light py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <h3>Get In Touch</h3>
+        <p class="lead">massa vitae tortor condimentum lacinia quis vel eros donec</p>
+	<form>
+	  <div class="input-group input-group-lg mb-3">
+	    <div class="input-group-prepend">
+	      <span class="input-group-text">
+	        <i class="fas fa-user"></i>
+	      </span>
+            </div>
+	    <input type="text" class="form-control" placeholder="Name">
+          </div>
+	  <div class="input-group input-group-lg mb-3">
+	    <div class="input-group-prepend">
+	      <span class="input-group-text">
+	        <i class="fas fa-envelope"></i>
+	      </span>
+            </div>
+	    <input type="text" class="form-control" placeholder="Email">
+          </div>
+	  <div class="input-group input-group-lg mb-3">
+	    <div class="input-group-prepend">
+	      <span class="input-group-text">
+	        <i class="fas fa-pencil-alt"></i>
+	      </span>
+            </div>
+	    <textarea class="form-control" rows="5"placeholder="Message"></textarea>
+          </div>
+	  <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
+	</form>
+       </div>
+
+       <div class="col-lg-3 align-self-center">
+         <img src="project_images/mizuxe/mlogo.png" class="img-fluid">
+       </div>
+     </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="main-footer" class="py-5 bg-primary text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-6 ml-auto">
+	<p class="lead">
+	  Copyright &copy; <span id="year"></span>
+	</p>
+      </div>
+    </div>
+  </div>
+</footer>
 <script
-  src="http://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  src="http://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>  
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script>
   // Get the current year for the copyright
   $('#year').text(new Date().getFullYear());
+
+  // Init Scrollspy
+  $('body').scrollspy({target: '#main-nav'});
+
+  // Smooth scrolling
+  $('#main-nav a').on('click', function(e) {
+      // Check for a hash value
+      if (this.hash !== '') {
+        // prevent default behavior
+        e.preventDefault();
+
+        // Store hash
+        const hash = this.hash;
+
+        // animate smooth scroll
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function() {
+          // add hash to URL after scroll
+          window.location.hash = hash;
+         });
+      }
+    });
+
 </script>
 </body>
 </html>
